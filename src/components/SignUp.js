@@ -1,30 +1,30 @@
 import React, { useRef, useState } from 'react'
-import {Card, Form ,Button , Alert} from "react-bootstrap"
+import { Card, Form, Button, Alert } from "react-bootstrap"
 import { Link, useHistory } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 
-const SignUp=()=> {
-    const emailRef=useRef();
-    const passwordRef=useRef();
-    const passwordConfirmRef=useRef();
-    const {signup} = useAuth();
-    const [error,setError]=useState("")
-    const [loading,setLoading]=useState(false)
-    const history=useHistory()
+const SignUp = () => {
+    const emailRef = useRef();
+    const passwordRef = useRef();
+    const passwordConfirmRef = useRef();
+    const { signup } = useAuth();
+    const [error, setError] = useState("")
+    const [loading, setLoading] = useState(false)
+    const history = useHistory()
 
-    async function handleSubmit(e){
+    async function handleSubmit(e) {
         e.preventDefault()
 
-        if(passwordRef.current.value!==passwordConfirmRef.current.value){
+        if (passwordRef.current.value !== passwordConfirmRef.current.value) {
             return setError('Passwords do not match!')
         }
 
-        try{
+        try {
             setError("")
             setLoading(true)
-            await signup(emailRef.current.value,passwordRef.current.value)
+            await signup(emailRef.current.value, passwordRef.current.value)
             history.push("/")
-        } catch{
+        } catch {
             setError('Falied to create an account!')
         }
 
@@ -34,7 +34,7 @@ const SignUp=()=> {
 
     return (
         <>
-            <Card style={{padding:"20px"}}>
+            <Card style={{ padding: "20px" }}>
                 <h2 className="text-center mb-4">Sign Up</h2>
                 {error && <Alert variant="danger">{error}</Alert>}
                 <Form onSubmit={handleSubmit}>
