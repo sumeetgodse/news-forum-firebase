@@ -12,3 +12,5 @@
 #### App should now be running on `http://localhost:3000/`
 
 #### Visit live app - https://news-forum-firebase.netlify.app/
+
+![image](https://github.com/user-attachments/assets/c56470f1-ec33-4e6f-94b9-a27cca724ba9)
